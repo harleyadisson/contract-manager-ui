@@ -1,1 +1,44 @@
-<p>contract works!</p>
+<h1>Cadastro de contratos</h1>
+<br>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="document" nzRequired>
+            <span>CPF/CNPJ</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Digite o seu CPF ou CNPJ.">
+            <input nz-input id="document" formControlName="document" placeholder="CPF/CNPJ" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+            <span>Nome/Razão social</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Digite o seu Nome ou Razão social.">
+            <input nz-input id="name" formControlName="name" placeholder="Nome/Razão social" />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description" nzRequired>
+            <span>Serviço prestado</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Digite a descrição do serviço.">
+            <textarea nz-input id="description" formControlName="description" rows="2"
+                placeholder="Descrição do serviço"></textarea>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="date" nzRequired>
+            <span>Vigência do contrato</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="16" [nzXs]="24">
+            <nz-range-picker nz-input id="date" formControlName="date"></nz-range-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Cadastrar</button>
+        </nz-form-control>
+    </nz-form-item>
+
+</form>
