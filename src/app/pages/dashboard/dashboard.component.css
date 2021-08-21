@@ -1,0 +1,14 @@
+#activeContracts {
+    background-color: rgb(183, 241, 214);
+    font-weight: bold;
+}
+
+#inactiveContracts {
+    background-color: rgb(241, 183, 183);
+    font-weight: bold;
+}
+
+#provider {
+    background-color: rgb(241, 232, 183);
+    font-weight: bold;
+}

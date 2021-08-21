@@ -1,1 +1,43 @@
-<p>dashbord works!</p>
+<h1>Painel de controle</h1>
+<br>
+<div style="background: #ECECEC; padding: 30px;">
+    <nz-row [nzGutter]="16">
+
+      <nz-col [nzSpan]="8">
+        <nz-card id="activeContracts">
+          <nz-statistic
+            [nzValue]="(activeContracts | number: '1.0-2')!"
+            [nzTitle]="'Contratos Ativos'"
+            [nzPrefix]="prefixTplOne"
+            [nzValueStyle]="{ color: '#3F8600' }"
+          ></nz-statistic>
+          <ng-template #prefixTplOne><i nz-icon nzType="form"></i></ng-template>
+        </nz-card>
+      </nz-col>
+
+      <nz-col [nzSpan]="8">
+        <nz-card id="inactiveContracts">
+          <nz-statistic
+            [nzValue]="(20 | number: '1.0-2')!"
+            [nzTitle]="'Contratos Vencidos'"
+            [nzPrefix]="prefixTplTwo"
+            [nzValueStyle]="{ color: '#CF1322' }">
+        </nz-statistic>
+          <ng-template #prefixTplTwo><i nz-icon nzType="form"></i></ng-template>
+        </nz-card>
+      </nz-col>
+
+      <nz-col [nzSpan]="8">
+        <nz-card id="provider">
+          <nz-statistic
+            [nzValue]="(activeProviders | number: '1.0-2')!"
+            [nzTitle]="'Prestadores de serviço'"
+            [nzPrefix]="prefixTplThree"
+            [nzValueStyle]="{ color: '#827642' }">
+        </nz-statistic>
+          <ng-template #prefixTplThree><i nz-icon nzType="user"></i></ng-template>
+        </nz-card>
+      </nz-col>
+
+    </nz-row>
+  </div>
