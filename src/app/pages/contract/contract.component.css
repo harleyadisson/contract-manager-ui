@@ -2,3 +2,11 @@
   [nz-form-label] {
       max-width: fit-content;
   }
+
+  input, select,textarea {
+    min-width: 300px;
+}
+
+  button{
+    background-color: #1890ff;
+  }

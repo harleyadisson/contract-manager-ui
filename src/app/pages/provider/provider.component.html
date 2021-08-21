@@ -1,1 +1,101 @@
-<p>provider works!</p>
+<h1>Cadastro de Prestador</h1>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="documentType" nzRequired>
+            <span>Pessoa física/jurídica</span>
+        </nz-form-label>
+        <select formControlName="documentType">
+            <option value=0 selected disabled hidden>Selecionar tipo</option>
+            <option value=0>Pessoa Física</option>
+            <option value=1>Pessoa Jurídica</option>
+           
+        </select>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="document" nzRequired>
+            <span>CPF/CNPJ</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Prestador, me informe o seu CPF/CPNJ">
+            <input nz-input id="document" formControlName="document" placeholder="CPF/CNPJ" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name" nzRequired>
+            <span>Nome/Razão social</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Digite o seu Nome ou Razão social.">
+            <input nz-input id="name" formControlName="name" placeholder="Nome/Razão social" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email" nzRequired>
+            <span>Email</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Infome o seu E-mail">
+            <input nz-input id="email" formControlName="email" placeholder="E-mail" />
+        </nz-form-control>
+    </nz-form-item>
+    <!-- ENDEREÇO DO PROVIDER-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cep" nzRequired>
+            <span>CEP</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Infome o CEP">
+            <input restrict-to="[0-9]" (keyup)="onKey($event)" nz-input id="cep" formControlName="cep" placeholder="CEP" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="logradouro" nzRequired>
+            <span>Logradouro</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o logradouro">
+            <input nz-input id="logradouro" formControlName="logradouro" placeholder="Logradouro" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="numero" nzRequired>
+            <span>Número</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="numero">
+            <input nz-input id="numero" formControlName="numero" placeholder="Número" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="complemento" nzRequired>
+            <span>complemento</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="complemento">
+            <input nz-input id="complemento" formControlName="complemento" placeholder="Complemento(Opcional)" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="bairro" nzRequired>
+            <span>Bairro</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="bairro">
+            <input nz-input id="bairro" formControlName="bairro" placeholder="Bairro" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cidade" nzRequired>
+            <span>Cidade</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="cidade">
+            <input nz-input id="cidade" formControlName="cidade" placeholder="Cidade" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="uf" nzRequired>
+            <span>UF</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="uf">
+            <input nz-input id="uf" formControlName="uf" placeholder="UF:" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+           
+            <button nz-button nzType="primary" nzShape="round" [nzSize]="size">Cadastrar</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

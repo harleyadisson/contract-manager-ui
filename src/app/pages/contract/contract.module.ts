@@ -6,6 +6,7 @@ import { ContractComponent } from './contract.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzFormModule,
     FormsModule,
     ReactiveFormsModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzButtonModule
   ]
 })
 export class ContractModule { }

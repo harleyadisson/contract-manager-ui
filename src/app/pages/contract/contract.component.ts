@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { getISOWeek } from 'date-fns';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-contract',
@@ -11,6 +11,7 @@ export class ContractComponent implements OnInit {
 
   validateForm!: FormGroup;
   date: any;
+  size: NzButtonSize = 'large';
   onChange(event: any) {
 
   }
