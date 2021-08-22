@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzButtonSize } from 'ng-zorro-antd/button';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-contract',
@@ -16,7 +17,16 @@ export class ContractComponent implements OnInit {
 
   }
 
-  constructor(private fb: FormBuilder) { }
+  createNotification(type: string): void {
+    console.log('chamou')
+    this.notification.create(
+      type,
+      'Cadastro de contrato',
+      'Contrato cadastrado com sucesso'
+    );
+  }
+
+  constructor(private fb: FormBuilder, private notification: NzNotificationService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -34,7 +44,31 @@ export class ContractComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
-    console.log(this.validateForm.value)
+    this.createNotification('success');
+    fetch('http://localhost:3000/contract', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        name: this.validateForm.controls.name.value,
+        serviceDescription: this.validateForm.controls.description.value,
+        term: {
+            startDate: this.validateForm.controls.date.value[0],
+            endDate: this.validateForm.controls.date.value[1]
+        }, provider: {"document": this.validateForm.controls.document.value,}
+    }),
+  })
+    .then(data => {
+      return data.json()
+    })
+    .then(response => { 
+      console.log("depois da resposta")
+    });
   }
+
+  
 
 }

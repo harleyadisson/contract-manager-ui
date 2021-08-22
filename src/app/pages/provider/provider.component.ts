@@ -40,21 +40,21 @@ export class ProviderComponent implements OnInit {
       },
       body: JSON.stringify(
         {
-          providerType: this.validateForm.controls.documentType.value,
-          document: this.validateForm.controls.document.value,
-          name: this.validateForm.controls.name.value,
-          email: this.validateForm.controls.email.value,
-          address: {
-            cep: this.validateForm.controls.cep.value,
-            logradouro: this.validateForm.controls.logradouro.value,
-            complemento: this.validateForm.controls.complemento.value,
-            bairro: this.validateForm.controls.bairro.value,
-            localidade: this.validateForm.controls.localidade.value,
-            uf: this.validateForm.controls.uf.value,
-            ibge: "",
-            gia: "",
-            ddd: "",
-            siafi: ""
+          "providerType": this.validateForm.controls.documentType.value,
+          "document": this.validateForm.controls.document.value,
+          "name": this.validateForm.controls.name.value,
+          "email": this.validateForm.controls.email.value,
+          "address": {
+            "cep": this.validateForm.controls.cep.value,
+            "logradouro": this.validateForm.controls.logradouro.value,
+            "complemento": this.validateForm.controls.complemento.value,
+            "bairro": this.validateForm.controls.bairro.value,
+            "localidade": this.validateForm.controls.localidade.value,
+            "uf": this.validateForm.controls.uf.value,
+            "ibge": "",
+            "gia": "",
+            "ddd": "",
+            "siafi": ""
           }
         }),
     })
@@ -81,6 +81,14 @@ export class ProviderComponent implements OnInit {
       uf: [null, [Validators.required]],
       documentType: [null, [Validators.required]],
     });
+
+    fetch('http://localhost:3000/provider')
+    .then(data => {
+      return data.json()
+    })
+    .then(providers => {
+      console.log(providers)
+    })
 
   }
 

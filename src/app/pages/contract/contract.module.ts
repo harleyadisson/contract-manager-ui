@@ -7,11 +7,18 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { ContractListComponent } from './contract-list/contract-list.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
 
 
 @NgModule({
   declarations: [
-    ContractComponent
+    ContractComponent,
+    ContractListComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +27,12 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     FormsModule,
     ReactiveFormsModule,
     NzDatePickerModule,
-    NzButtonModule
+    NzButtonModule,
+    NzIconModule,
+    NzTableModule,
+    NzPopconfirmModule,
+    NzNotificationModule
+    
   ]
 })
 export class ContractModule { }
