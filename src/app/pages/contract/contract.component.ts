@@ -18,7 +18,6 @@ export class ContractComponent implements OnInit {
   }
 
   createNotification(type: string): void {
-    console.log('chamou')
     this.notification.create(
       type,
       'Cadastro de contrato',
@@ -30,7 +29,7 @@ export class ContractComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      document: [null, [Validators.required]],
+      document: [null,[Validators.required]],
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
       date: [null, [Validators.required]],
@@ -44,7 +43,6 @@ export class ContractComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
-    this.createNotification('success');
     fetch('http://localhost:3000/contract', {
     method: 'POST',
     headers: {
@@ -62,11 +60,14 @@ export class ContractComponent implements OnInit {
     }),
   })
     .then(data => {
-      return data.json()
+      return data
     })
     .then(response => { 
-      console.log("depois da resposta")
-    });
+      this.createNotification('success');
+      console.log(response)
+    }).catch (err => {
+      this.createNotification('error');
+    })
   }
 
   

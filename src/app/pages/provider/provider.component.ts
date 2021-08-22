@@ -2,6 +2,7 @@ import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzButtonSize } from 'ng-zorro-antd/button';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-provider',
@@ -20,7 +21,15 @@ export class ProviderComponent implements OnInit {
 
   nzDropdownMenu: any;
 
-  constructor(private fb: FormBuilder) { }
+  createNotification(type: string): void {
+    this.notification.create(
+      type,
+      'Cadastro de Prestador',
+      'Prestador cadastrado com sucesso'
+    );
+  }
+
+  constructor(private fb: FormBuilder, private notification: NzNotificationService) { }
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -51,6 +60,7 @@ export class ProviderComponent implements OnInit {
             "bairro": this.validateForm.controls.bairro.value,
             "localidade": this.validateForm.controls.localidade.value,
             "uf": this.validateForm.controls.uf.value,
+            "numero": this.validateForm.controls.numero.value,
             "ibge": "",
             "gia": "",
             "ddd": "",
@@ -59,11 +69,15 @@ export class ProviderComponent implements OnInit {
         }),
     })
       .then(data => {
-        return data.json()
+        return data
       })
       .then(response => {
+        this.createNotification('success');
         console.log(response)
-      });
+      }).catch(err => {
+        console.log(err)
+        this.createNotification('error');
+      })
 
   }
 
@@ -81,14 +95,6 @@ export class ProviderComponent implements OnInit {
       uf: [null, [Validators.required]],
       documentType: [null, [Validators.required]],
     });
-
-    fetch('http://localhost:3000/provider')
-    .then(data => {
-      return data.json()
-    })
-    .then(providers => {
-      console.log(providers)
-    })
 
   }
 

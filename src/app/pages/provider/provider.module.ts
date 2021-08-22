@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ProviderListComponent } from './provider-list/provider-list.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     ReactiveFormsModule,
     ReactiveFormsModule,
     NzButtonModule,
-    NzIconModule
+    NzIconModule,
+    NzTableModule,
+    NzPopconfirmModule,
+    NzNotificationModule
   ]
 })
 export class ProviderModule {}

@@ -44,17 +44,16 @@ export class ContractListComponent implements OnInit {
         "id": this.listOfData[index].id,
         "name": this.listOfData[index].name,
         "serviceDescription": this.listOfData[index].description,
-        "provider": {"document": this.listOfData[index].document},
+        "provider": { "document": this.listOfData[index].document },
         "term": {
           "id": this.listOfData[index].termId,
           "startDate": this.listOfData[index].startDate,
           "endDate": this.listOfData[index].endDate
         }
-    }
-        ),
+      }),
     })
       .then(data => {
-        return data.json()
+        return data;
       })
       .then(response => {
         console.log(response)
@@ -71,10 +70,10 @@ export class ContractListComponent implements OnInit {
   }
 
   remove(id: string): void {
-    console.log(id)
     const index = this.listOfData.findIndex(item => item.id === id);
 
-    console.log(this.listOfData[index])
+    this.listOfData = this.listOfData.filter(d => d.id !== id);
+    this.updateEditCache();
 
     fetch(`http://localhost:3000/contract?id=${id}`, {
       method: 'delete',
@@ -82,42 +81,56 @@ export class ContractListComponent implements OnInit {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: "" 
+      body: ""
     })
       .then(data => {
-        return data.json()
+        return data;
       })
       .then(response => {
         console.log(response)
-       
-      });
-      location.reload();
-      
+
+      }).catch(err => {
+        console.log(err)
+      })
   }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
 
     fetch('http://localhost:3000/contract')
-    .then(data => {
-      return data.json()
-    })
-    .then(contracts => {
-      console.log(contracts)
-      const data = [];
-      for (let contract of contracts) {
-        data.push({
-          id: contract.id,
-          name: contract.name,
-          description: contract.serviceDescription,
-          document: contract.provider.document,
-          startDate: contract.term.startDate,
-          endDate: contract.term.endDate,
-          termId: contract.term.id
-        });
-      
-      this.listOfData = data;
-      this.updateEditCache();
-    }}); 
+      .then(data => {
+        return data.json()
+      })
+      .then(contracts => {
+        console.log(contracts)
+        const data = [];
+        for (let contract of contracts) {
+          if (contract.provider) {
+            data.push({
+              id: contract.id,
+              name: contract.name,
+              description: contract.serviceDescription,
+              document: contract.provider.document,
+              startDate: contract.term.startDate,
+              endDate: contract.term.endDate,
+              termId: contract.term.id
+            });
+          } else {
+            data.push({
+              id: contract.id,
+              name: contract.name,
+              description: contract.serviceDescription,
+              document: "",
+              startDate: contract.term.startDate,
+              endDate: contract.term.endDate,
+              termId: contract.term.id
+            });
+          }
+
+
+          this.listOfData = data;
+          this.updateEditCache();
+        }
+      });
   }
 }
 

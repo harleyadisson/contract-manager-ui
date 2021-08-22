@@ -1,14 +1,14 @@
 <h1>Lista de contratos</h1>
 <br>
-<nz-table #editRowTable nzBordered [nzData]="listOfData" nzTableLayout="fixed">
+<nz-table #editRowTable nzBordered [nzData]="listOfData" nzTableLayout="fixed" [nzPageSize]=8>
     <thead>
         <tr>
-            <th nzWidth="25%">Nome</th>
-            <th nzWidth="15%">Descrição do serviço</th>
-            <th nzWidth="15%">CPF/CNPJ</th>
-            <th nzWidth="15%">Data de início</th>
-            <th nzWidth="15%">Data de fim</th>
-            <th>Ação</th>
+            <th nzWidth="15%">Nome</th>
+            <th nzWidth="30%">Descrição do serviço</th>
+            <th nzWidth="7%">CPF/CNPJ</th>
+            <th nzWidth="10%">Data de início</th>
+            <th nzWidth="10%">Data de fim</th>
+            <th nzWidth="7%">Ação</th>
         </tr>
     </thead>
     <tbody>
